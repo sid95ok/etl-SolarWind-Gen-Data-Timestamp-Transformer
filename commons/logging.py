@@ -1,4 +1,6 @@
-# Basic logging module for the project, might be upgraded in future according to requirements
+""" Basic logging module for the project, might be upgraded in future according
+    to requirements
+"""
 import logging
 
 

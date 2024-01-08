@@ -1,4 +1,6 @@
-# Utility methods file, where misc methods can be defined to avoid code duplication
+""" Utility methods file, where misc methods can be defined to avoid
+    code duplication
+"""
 from os import environ
 from typing import Any, Union
 from datetime import date, timedelta, datetime, timezone
