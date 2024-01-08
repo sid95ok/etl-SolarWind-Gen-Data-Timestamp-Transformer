@@ -18,5 +18,11 @@ ETL client that will extract Solar and Wind data, transform naive timestamps to 
 4. If needed, ETL pipeline can be run for some other date as well instead of today's date by adding one
 more env variable `LATEST_DATE` with format `YYYY-MM-DD` and then completed command would be
 `API_KEY='<api_key>' API_SERVER_URL='<server_url>' LATEST_DATE='YYYY-MM-DD' python etl_handler.py`
-#### Note: API_KEY used here is not safe, it is used just for the purpose of testing.
+#### Note: API_KEY used here is `NOT SAFE`, it is used just for the purpose of testing.
 #### While actual deployment it should be placed safely somewhere like AWS Secretsmanager, Parameters, etc. as per the requirements.
+
+
+### Tests (Unit and Integration)
+1. To run all the tests: `API_KEY='<api_key>' API_SERVER_URL='<server_url>' python -m coverage run -m unittest`
+#### Note: Replace api_key and server_url with the proper values
+2. To see the final coverage report: `python -m coverage report`
