@@ -14,7 +14,7 @@ ETL client that will extract Solar and Wind data, transform naive timestamps to 
 1. Setup a virtual or package manager environment (`pipenv`, `conda`, etc.)
 2. Install requirements into your environment: `pip install -r requirements.txt`
 3. Run the pipeline using this command data source: `API_KEY='<api_key>' API_SERVER_URL='<server_url>' python etl_handler.py`
-#### Note: Replace api_key and server_url with the proper values.
+#### Note: Replace <api_key> and <server_url> with the proper values.
 4. If needed, ETL pipeline can be run for some other date as well instead of today's date by adding one
 more env variable `LATEST_DATE` with format `YYYY-MM-DD` and then completed command would be
 `API_KEY='<api_key>' API_SERVER_URL='<server_url>' LATEST_DATE='YYYY-MM-DD' python etl_handler.py`
@@ -24,5 +24,6 @@ more env variable `LATEST_DATE` with format `YYYY-MM-DD` and then completed comm
 
 ### Tests (Unit and Integration)
 1. To run all the tests: `API_KEY='<api_key>' API_SERVER_URL='<server_url>' python -m coverage run -m unittest`
-#### Note: Replace api_key and server_url with the proper values
+#### Note: Replace <api_key> and <server_url> with the proper values
+#### Note: Integration tests will ONLY run if env vars are set properly similarly like using above command
 2. To see the final coverage report: `python -m coverage report`
