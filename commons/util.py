@@ -24,6 +24,7 @@ session.mount('http://', HTTPAdapter(max_retries=retries))
 def get_latest_week_date_range(latest_date: str = None) -> Union[list, None]:
     """Get range of dates for last 7 days from provided date (default current latest week)
     :param latest_date: 'YYYY-MM-DD' - if this is provided, it will be used instead of today's date
+    :return: list of dates
     """
     latest_date = environ.get("LATEST_DATE", latest_date)
     if not latest_date:
@@ -46,6 +47,7 @@ def request_api_call(api_base_url: str = "/status") -> Any:
     """
     A common util function to call all `get` APIs using requests python module
     :param api_base_url: base API URL without main server URL in prefix
+    :return: API Response
     """
     if not api_key or not server_url or not api_base_url:
         logger.error(
@@ -80,6 +82,7 @@ def get_solar_data(date_value: str) -> str:
     """
     Calling `Solar` data backend API on any given date
     :param date_value: YYYY-MM-DD formatted date string
+    :return: API Response
     """
     return request_api_call(
         api_base_url=f"/{date_value}/renewables/solargen.json"
@@ -90,6 +93,7 @@ def get_wind_data(date_value):
     """
     Calling `Wind` data backend API on any given date
     :param date_value: YYYY-MM-DD formatted date string
+    :return: API Response
     """
     return request_api_call(
         api_base_url=f"/{date_value}/renewables/windgen.csv"
@@ -101,6 +105,7 @@ def convert_naive_timestamp_to_utc_datetime(timestamp: [str, int, float]) -> Uni
     This util function converts given naive timestamp format(Unix) to utc datetime string
     which will have timezone info as UTC.
     :param timestamp: Naive timestamp(Unix) string to be converted
+    :return: string(utc datetime string with UTC) or None (if wrong format is provided)
     """
     if not isinstance(timestamp, (str, int, float)):
         return
@@ -121,6 +126,7 @@ def convert_utc_datetime_to_naive_datetime(datetime_str: str) -> Union[str, None
     This util function removes timezone info from the give timestamp string to
     make it naive; expected format - %Y-%m-%d %H:%M:%S%z
     :param datetime_str: Timestamp with UTC provided in its timezone info
+    :return: String(naive timestamp string) or None(If wrong format is provided)
     """
     if not isinstance(datetime_str, str):
         return
@@ -137,6 +143,7 @@ def remove_str_whitespaces(string: str) -> Union[str, None]:
     spaces in start or end of the string. e.g. - ` Apple is   sweet` will be
     converted to `Apple is sweet`.
     :param string: any given string
+    :return: formatted string without whitespaces
     """
     if not isinstance(string, str):
         return
@@ -146,5 +153,6 @@ def remove_str_whitespaces(string: str) -> Union[str, None]:
 def get_date_today():
     """
     This util function will return today's date in the YYYY-MM-DD format
+    :return: string, today's date
     """
     return datetime.utcnow().strftime("%Y-%m-%d")

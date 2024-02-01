@@ -5,10 +5,10 @@ from commons.logging import logger
 
 def write_solar_data(solar_df: pd.DataFrame, date_range: list) -> bool:
     """
-    Writes finally transformed solar data in storage, doesn't return anything
+    Writes finally transformed solar data in storage, returns success bool
     :param solar_df: transformed solar generation data dataframe
     :param date_range: Range of dates for which the data has been processed
-    :return: None
+    :return: success bool, False is nothing written and True if data has written
     """
     result = False
     count_flag = 0
@@ -34,10 +34,10 @@ def write_solar_data(solar_df: pd.DataFrame, date_range: list) -> bool:
 
 def write_wind_data(wind_df: pd.DataFrame, date_range: list) -> bool:
     """
-    Writes finally transformed wind data in storage, doesn't return anything
+    Writes finally transformed wind data in storage, returns success bool
     :param wind_df: transformed wind dataframe
     :param date_range: Range of dates for which the data has been processed
-    :return: None
+    :return: success bool, False is nothing written and True if data has written
     """
     result = False
     count_flag = 0
